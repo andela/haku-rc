@@ -10,7 +10,10 @@ function getProductFindTerm(searchTerm, searchTags, userId) {
   const shopId = Reaction.getShopId();
   const findTerm = {
     shopId: shopId,
-    $text: {$search: searchTerm}
+    title: {
+      $regex: searchTerm,
+      $options: "i"
+    }
   };
   if (searchTags.length) {
     findTerm.hashtags = {$all: searchTags};
