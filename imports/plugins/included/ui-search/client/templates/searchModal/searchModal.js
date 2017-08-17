@@ -1,10 +1,7 @@
 import _ from "lodash";
-import React from "react";
-import { DataType } from "react-taco-table";
 import { Template } from "meteor/templating";
-import { i18next } from "/client/api";
 import { ProductSearch, Tags, OrderSearch, AccountSearch } from "/lib/collections";
-import { IconButton, SortableTable } from "/imports/plugins/core/ui/client/components";
+import { IconButton } from "/imports/plugins/core/ui/client/components";
 
 /*
  * searchModal extra functions
@@ -44,9 +41,45 @@ Template.searchModal.onCreated(function () {
   });
 
 
+  /*
+   * Sort and Filter helpers
+   *
+   * Filter products by price
+   */
+  const priceFilter = (products, query) =>  {
+    return products.filter((product) => {
+      if (product.price) {
+        if (product.price.max >= query[0] && product.price.min <= query[1]) {
+          return product;
+        }
+      }
+    });
+  };
+
+  // Filter products by brand
+  function vendorFilter(products, query) {
+    return products.filter(product => product.vendor === query);
+  }
+
+  // Sort products by price
+  const sortProducts = (products, type) => {
+    return products.sort((a, b) => {
+      const productPrice = a.price ? a.price.min : -1;
+      const nextProductPrice = b.price ? b.price.min : -1;
+      if (type === "ASC") {
+        return productPrice - nextProductPrice;
+      }
+      return nextProductPrice - productPrice;
+    });
+  };
+
+
   this.autorun(() => {
     const searchCollection = this.state.get("searchCollection") || "products";
     const searchQuery = this.state.get("searchQuery");
+    const priceQuery = Session.get("priceFilter");
+    const vendorQuery = Session.get("vendorFilter");
+    const sortQuery = Session.get("sortValue");
     const facets = this.state.get("facets") || [];
     const sub = this.subscribe("SearchResults", searchCollection, searchQuery, facets);
 
@@ -55,7 +88,19 @@ Template.searchModal.onCreated(function () {
        * Product Search
        */
       if (searchCollection === "products") {
-        const productResults = ProductSearch.find().fetch();
+        let productResults = ProductSearch.find().fetch();
+        const searchedVendors = _.uniq(_.map(productResults, "vendor"));
+        Session.set("searchedVendors", searchedVendors);
+        if (priceQuery && priceQuery !== "all") {
+          const range = priceQuery.split("-");
+          productResults =  priceFilter(productResults, range);
+        }
+        if (vendorQuery && vendorQuery !== "all") {
+          productResults = vendorFilter(productResults, vendorQuery);
+        }
+        if (sortQuery && sortQuery !== "null") {
+          productResults = sortProducts(productResults, sortQuery);
+        }
         const productResultsCount = productResults.length;
         this.state.set("productSearchResults", productResults);
         this.state.set("productSearchCount", productResultsCount);
@@ -126,7 +171,6 @@ Template.searchModal.helpers({
     return {
       component: IconButton,
       icon: "fa fa-times",
-      kind: "close",
       onClick() {
         $(".js-search-modal").fadeOut(400, () => {
           $("body").css("overflow", "visible");
@@ -183,6 +227,9 @@ Template.searchModal.events({
     $(".js-search-modal").delay(400).fadeOut(400, () => {
       Blaze.remove(view);
     });
+  },
+  "click [data-event-action=toggleFilter]": function () {
+    $(".js-search-modal").toggleClass("filters-on");
   },
   "click [data-event-action=clearSearch]": function (event, templateInstance) {
     $("#search-input").val("");

@@ -14,7 +14,14 @@
 
     </div>
 
-    {{> searchResults productSearchResults=productSearchResults orderSearchResults=orderSearchResults accountSearchResults=accountSearchResults orderTable=orderTable accountTable=accountTable }}
+    <div class="row">
+      <div class="col-md-2 sort-filter-div">
+        {{> sortFilter}}
+      </div>
+      <div class="col-md-10 product-search-result-div">
+        {{> searchResults productSearchResults=productSearchResults orderSearchResults=orderSearchResults accountSearchResults=accountSearchResults orderTable=orderTable accountTable=accountTable }}
+      </div>
+    </div>
 
   </div>
 
