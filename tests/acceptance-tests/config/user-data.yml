@@ -1,6 +1,6 @@
-admin_user: Administrator
-admin_email: testing@reactioncommerce.com
-admin_pw: password123
+admin_user: Admin
+admin_email: admin@localhost
+admin_pw: r3@cti0n
 
 guest_email: "guest@reactioncommerce.com"
 guest_pw: password123

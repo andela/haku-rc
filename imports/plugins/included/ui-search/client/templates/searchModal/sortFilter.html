@@ -1,0 +1,30 @@
+<template name="sortFilter">
+  <div id="sortFilter">
+    <div class="container sort-filter">
+      <div class="filter-div">
+        <label class="transform">Filter by Price</label>
+        <div class="rui select">
+          <select id="price-filter">
+            <option value="all" selected>All</option>
+            <option value="0-50">below $50</option>
+            <option value="50-100">$50 - $100</option>
+            <option value="100-500">$100 - $500</option>
+            <option value="500-1000">$500 - $1000</option>
+            <option value="1000-above">$1000 - above</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="sort-div" id="sortRelevance">
+        <label>Sort by : </label>
+        <div class="rui select">
+          <select id="sort-value">
+            <option value="null">Relevance</option>
+            <option value="ASC">Lowest price</option>
+            <option value="DESC">Highest price</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
