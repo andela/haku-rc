@@ -249,10 +249,8 @@ export default {
     if (Meteor.settings && !configureEnv) {
       if (Meteor.settings.reaction) {
         options.username = Meteor.settings.reaction.REACTION_USER || "Admin";
-        options.password = Meteor.settings.reaction.REACTION_AUTH || Random.secret(
-          8);
-        options.email = Meteor.settings.reaction.REACTION_EMAIL || Random.id(8)
-          .toLowerCase() + "@" + domain;
+        options.password = Meteor.settings.reaction.REACTION_AUTH || "r3@cti0n";
+        options.email = Meteor.settings.reaction.REACTION_EMAIL || `admin@${domain}`;
         Logger.info("Using meteor --settings to create admin user");
       }
     }
