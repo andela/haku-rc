@@ -84,7 +84,6 @@ AutoForm.addHooks("paystack-payment-form", {
       try {
         PaystackPop.setup(details).openIframe();
       } catch (error) {
-        console.log(error, "========")
         handlePaystackSubmitError(template, error);
         enableButton(template, "Complete payment");
       }
