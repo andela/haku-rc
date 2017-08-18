@@ -14,11 +14,11 @@ describe("Real Time Search", function () {
     const eleMap = yaml.safeLoad(fs.readFileSync("./tests/acceptance-tests/elements/element-map.yml", "utf8"));
     const inputText = "e";
 
-    browser.pause("5000");
+    browser.waitForExist(".product-primary-images");
     browser.click(eleMap.search_test);
-    browser.pause(5000);
+    browser.waitForExist("#search-input");
     browser.setValue("#search-input", inputText);
-    browser.pause(5000);
+    browser.waitForExist("#suggestedTitle");
     expect(browser.getText("#suggestedTitle")).to.contain("BASIC REACTION PRODUCT");
     expect(browser.getText("#suggestedTitle")).to.contain("BETTER NAME");
     expect(browser.getText("#suggestedTitle")).to.contain("ADETOKUNBO");
@@ -27,11 +27,11 @@ describe("Real Time Search", function () {
     const eleMap = yaml.safeLoad(fs.readFileSync("./tests/acceptance-tests/elements/element-map.yml", "utf8"));
     const inputText = "et";
 
-    browser.pause("5000");
+    browser.waitForExist(".product-primary-images");
     browser.click(eleMap.search_test);
-    browser.pause(5000);
+    browser.waitForExist("#search-input");
     browser.setValue("#search-input", inputText);
-    browser.pause(5000);
+    browser.waitForExist("#suggestedTitle");
     expect(browser.getText("#suggestedTitle")).to.contain("BETTER NAME");
     expect(browser.getText("#suggestedTitle")).to.contain("ADETOKUNBO");
   });
@@ -39,11 +39,11 @@ describe("Real Time Search", function () {
     const eleMap = yaml.safeLoad(fs.readFileSync("./tests/acceptance-tests/elements/element-map.yml", "utf8"));
     const inputText = "ett";
 
-    browser.pause("5000");
+    browser.waitForExist(".product-primary-images");
     browser.click(eleMap.search_test);
-    browser.pause(5000);
+    browser.waitForExist("#search-input");
     browser.setValue("#search-input", inputText);
-    browser.pause(5000);
+    browser.waitForExist("#suggestedTitle");
     expect(browser.getText("#suggestedTitle")).to.equal("BETTER NAME");
   });
 });
