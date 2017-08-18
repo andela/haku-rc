@@ -1,0 +1,55 @@
+<template name="paystackSettings">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <div class="panel-title">Panel Title</div>
+    </div>
+    <div class="panel-body">
+      {{#autoForm collection=Collections.Packages schema=PaystackPackageConfig doc=packageData type="update" id="paystack-update-form"}}
+        {{>afQuickField name='settings.publicKey'}}
+        {{>afQuickField name='settings.secretKey'}}
+        <button type="submit" class="btn btn-primary pull-right">Update</button>
+      {{/autoForm}}
+    </div>
+  </div>
+</template>
+
+<template name="paystack">
+  <div class="container-fluid-sm flex">
+    <div class="flex-item">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title">paystack Payment Method</div>
+        </div>
+        <div class="list-group">
+          <div class="list-group-item">
+            {{#if packageData.settings.publicKey}}
+              <span>API Client ID: <button type="button" class="btn btn-link" data-event-action="showPaystackSettings">**********</button></span>
+            {{else}}
+              <span>API Client ID: <button type="button" class="btn btn-link" data-event-action="showPaystackSettings">Configure Now</button></span>
+            {{/if}}
+          </div>
+        </div>
+        <div class="panel-footer">
+          <div class="left"></div>
+          <div class="right">
+
+            <div class="panel-footer-item">
+              {{#if packageData.settings.publicKey}}
+                <i class="fa fa-check-circle fa-2x text-success"></i>
+              {{else}}
+                <i class="fa fa-minus-circle fa-2x text-muted"></i>
+              {{/if}}
+            </div>
+
+            <div class="panel-footer-item">
+              <button class="btn btn-default" data-event-action="showPaystackSettings">
+                <i class="fa fa-gear"></i>
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
