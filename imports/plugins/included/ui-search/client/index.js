@@ -2,6 +2,7 @@
 import "./templates/searchModal/searchModal.html";
 import "./templates/searchModal/searchModal.js";
 import "./templates/searchModal/searchInput.html";
+import "./templates/searchModal/searchInput.js";
 import "./templates/searchModal/searchTypeToggle.html";
 import "./templates/searchModal/searchResults.html";
 
@@ -21,3 +22,7 @@ import "./templates/orderSearch/orderResults.js";
 // Account Search
 import "./templates/accountSearch/accountResults.html";
 import "./templates/accountSearch/accountResults.js";
+
+// Sort Search
+import "./templates/searchModal/sortFilter.html";
+import "./templates/searchModal/sortFilter.js";
