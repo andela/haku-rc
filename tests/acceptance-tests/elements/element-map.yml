@@ -3,6 +3,8 @@ login_email_fld: "[class='form-control login-input-email']"
 search_test: "[class='search search-test']"
 login_pw_fld: "[class='form-control login-input-password']"
 login_btn: "[data-event-action='submitSignInForm']"
+signup: "[data-event-action='signUp']"
+register: "[data-event-action='register']"
 filter_dropdown: "[id='price-filter']"
 sort_dropdown: "[id='sort-value']"
 
@@ -95,3 +97,9 @@ stripe_complete_order_btn: "//form[@id='stripe-payment-form']/button"
 
 # order confirmation page
 thank_you_txt: "h3 > span"
+
+# getting started tour
+tour_test: "[class='tour']"
+next: "[class='introjs-button introjs-nextbutton']"
+prev: "[class='introjs-button introjs-prevbutton']"
+skip: "[class='introjs-button introjs-skipbutton']"
