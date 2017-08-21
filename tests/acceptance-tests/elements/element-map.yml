@@ -5,6 +5,8 @@ login_pw_fld: "[class='form-control login-input-password']"
 login_btn: "[data-event-action='submitSignInForm']"
 signup: "[data-event-action='signUp']"
 register: "[data-event-action='register']"
+filter_dropdown: "[id='price-filter']"
+sort_dropdown: "[id='sort-value']"
 
 #account profile
 pl_email_address_fld: "//div[2]/div/div/div/form/div/input"
@@ -101,7 +103,3 @@ tour_test: "[class='tour']"
 next: "[class='introjs-button introjs-nextbutton']"
 prev: "[class='introjs-button introjs-prevbutton']"
 skip: "[class='introjs-button introjs-skipbutton']"
-
-# Options
-options: "[class='dropdown-toggle']"
-logout: "[id='logout']"
