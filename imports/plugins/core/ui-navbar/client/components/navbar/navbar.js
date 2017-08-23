@@ -1,6 +1,7 @@
 import { FlatButton } from "/imports/plugins/core/ui/client/components";
 import { Reaction } from "/client/api";
 import { Tags } from "/lib/collections";
+import { userTour } from "/imports/plugins/included/tour/client/userTour.js";
 
 Template.CoreNavigationBar.onCreated(function () {
   this.state = new ReactiveDict();
@@ -45,6 +46,17 @@ Template.CoreNavigationBar.helpers({
     return () => {
       if (instance.toggleMenuCallback) {
         instance.toggleMenuCallback();
+      }
+    };
+  },
+
+  TourButtonComponent() {
+    return {
+      component: FlatButton,
+      icon: "fa fa-train",
+      kind: "flat",
+      onClick() {
+        userTour();
       }
     };
   },
