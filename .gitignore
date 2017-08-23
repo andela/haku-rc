@@ -39,3 +39,5 @@ imports/plugins/custom/*
 !imports/plugins/custom/.gitkeep
 
 .reaction/config.json
+
+.env
