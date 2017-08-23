@@ -1,73 +1,69 @@
 <template name="productReview">
-<div class="container-main">
-<div class="row show-review">
-  {{rating}}
-  <div id="reviews">
-    <h3>Submit a review</h3>
-    <div>
-      <h5>Rating:</h5>
-      {{> starsRating id='rating' mutable=true size=20}}
+  <div class="container-main">
+    <div class="row show-review">
+      {{rating}}
+      <div id="reviews">
+        <h3>Submit a review</h3>
+        <div>
+          <h5>Rating:</h5>
+          {{> starsRating id='rating' mutable=true size=20}}
+        </div>
+        <div id="comment-box">
+          <h5>Comment:</h5>
+          <textarea id="comment" style="max-width: 350px;" class="form-control" placeholder="Please write your comment here"></textarea>
+          <br>
+          <button type="submit" id="send" class="btn btn-success">Submit Review</button>
+        </div>
+      </div>
     </div>
-    <div id="comment-box">
-      <h5>Comment:</h5>
-      <textarea id="comment" style="max-width: 350px;" class="form-control" placeholder="Please write your comment here"></textarea>
-      <br>
-      <button type="submit" id="send" class="btn btn-success">Submit Review</button>
-    </div>
+    <div class="row"></div>
   </div>
-</div>
-<div class="row"></div>
-</div>
 </template>
 
 <template name="showReviews">
   <div class="container-main">
     <div class="row">
       <div class="userreview">
-    <h3>Product Reviews</h3>
-    {{#unless reviews}}
-    <p>No reviews </p>
-    {{/unless}}
-    {{#if reviews}}
-    {{#each review in reviews}}
-    <div class="row">
-      <div>
-        <b> {{review.username}} </b>
+        <h3>Product Reviews</h3>
+        {{#unless reviews}}
+        <p>No reviews </p>
+        {{/unless}} {{#if reviews}} {{#each review in reviews}}
+        <div class="row">
+          <div>
+            <b> {{review.username}} </b>
+          </div>
+          <div>
+            {{review.dateCreated}}
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            {{> starsRating rating=review.rating size=20}}
+          </div>
+          <div>
+            {{review.comment}}
+          </div>
+        </div>
+        <br> {{/each}} {{/if}}
       </div>
-      <div>
-      {{review.dateCreated}}
-      </div>
-    </div>
-    <div class="row">
-      <div>
-      {{> starsRating rating=review.rating size=20}}
-      </div>
-      <div>
-      {{review.comment}}
-      </div>
-    </div>
-      <br>
-    {{/each}}
-    {{/if}}
-  </div>
     </div>
   </div>
 </template>
 
 <template name="embedSocial">
-<div class="container-main">
-  <div class="row">
-  <div class="{{testDisplay.facebook}}">
-    {{#if facebook}}
-    <iframe src={{facebook}} width="400" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
-    {{/if}}
+  <div class="container-main">
+    <div class="row">
+      <div class="{{testDisplay.facebook}}" id='fb-integration'>
+        {{#if facebook}}
+        <iframe src={{facebook}} width="400" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+        {{/if}}
+      </div>
+      <div id='twitter-integration' class="{{testDisplay.twitter}}" style="height: 400px; overflow-y: scroll;">
+        {{#if twitter}}
+        <a class="twitter-timeline" href="{{twitter}}">Tweets by {{twitter}}</a>
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        {{/if}}
+      </div>
+    </div>
   </div>
-  <div class="{{testDisplay.twitter}}" style="height: 400px; overflow-y: scroll;">
-    {{#if twitter}}
-      <a class="twitter-timeline" href="{{twitter}}">Tweets by {{twitter}}</a>
-      <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-    {{/if}}
-  </div>
-  </div>
-</div>
 </template>
