@@ -17,25 +17,25 @@ describe("Notification", () => {
     const eleIds = yaml.safeLoad(fs.readFileSync("./tests/acceptance-tests/elements/element-ids.yml", "utf8"));
     const eleMap = yaml.safeLoad(fs.readFileSync("./tests/acceptance-tests/elements/element-map.yml", "utf8"));
 
-    browser.pause(5000);
+    browser.waitForExist(".product-grid-list.list-unstyled");
     browser.click(eleMap.login_dropdown_btn);
-    browser.pause(5000);
+    browser.waitForExist(".accounts-dropdown.open");
     browser.setValue(getId.retId(eleIds.login_email_fld_id), "tester@test.com");
     browser.setValue(getId.retId(eleIds.login_pw_fld_id), "tester");
     browser.click(eleMap.login_btn);
-    browser.pause(5000);
+    browser.waitForExist(".product-grid-list.list-unstyled");
 
     browser.click("#BCTMZ6HTxFSppJESk");
-    browser.pause(6000);
+    browser.waitForExist(".pdp.header");
     browser.scroll(0, 300);
-    browser.pause(4000);
     browser.click(eleMap.red_option);
     browser.pause(1000);
     browser.click(".js-add-to-cart");
-    browser.pause(2000);
+    browser.waitForVisible(".cart-alert");
     browser.click(".cart-alert-checkout");
-    browser.pause(3000);
+    browser.waitForExist(".checkout-progress");
     browser.scroll(0, 500);
+    browser.pause(1000);
     browser.click(eleMap.free_shipping);
     browser.waitForEnabled(eleMap.example_payment, 5000);
     browser.click(eleMap.example_payment);
