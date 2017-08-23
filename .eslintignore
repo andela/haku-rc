@@ -3,3 +3,4 @@
 *.min.*
 server/plugins.js
 client/plugins.js
+imports/plugins/included/paystack/lib/api/paystackApi.js
