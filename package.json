@@ -46,6 +46,7 @@
     "i18next-sprintf-postprocessor": "^0.2.2",
     "jquery": "^3.1.1",
     "jquery-i18next": "^1.1.0",
+    "jusibe": "^1.0.1",
     "later": "^1.2.0",
     "lodash": "^4.16.3",
     "meteor-node-stubs": "^0.2.3",
@@ -83,6 +84,7 @@
     "tether-drop": "^1.4.2",
     "tether-tooltip": "^1.2.0",
     "transliteration": "github:reactioncommerce/transliteration",
+    "twilio": "^3.6.3",
     "url": "^0.11.0"
   },
   "devDependencies": {
