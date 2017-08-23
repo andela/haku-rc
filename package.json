@@ -35,6 +35,7 @@
     "css-annotation": "^0.6.2",
     "deep-diff": "^0.3.8",
     "dnd-core": "^2.0.2",
+    "dotenv": "^4.0.0",
     "faker": "^3.1.0",
     "fibers": "^1.0.14",
     "font-awesome": "^4.6.3",

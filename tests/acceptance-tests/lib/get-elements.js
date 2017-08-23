@@ -14,5 +14,16 @@ module.exports = {
   },
   retId: function (element) {
     return this.getElementById(element).value;
+  },
+  customGetElementById: function (ele) {
+    const grabElement = browser.execute(function (ele) {
+      const elementStr = ele;
+    // const elementId = '[id^="' + elementStr + '"]';
+      return "#" + elementStr;
+    }, ele);
+    return grabElement;
+  },
+  customRetId: function (element) {
+    return this.customGetElementById(element).value;
   }
 };
