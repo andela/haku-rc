@@ -1,4 +1,4 @@
-import { Cart } from "/lib/collections";
+import { Cart, Accounts } from "/lib/collections";
 import { Template } from "meteor/templating";
 
 /*
@@ -77,4 +77,11 @@ Template.registerHelper("cartPayerName", function () {
     const name = cart.billing[0].address.fullName;
     if (name.replace(/[a-zA-Z ]*/, "").length === 0) return name;
   }
+});
+
+// Get payers email
+Template.registerHelper("payerEmail", function () {
+  const accounts = Accounts.findOne();
+  const email = accounts.emails[0].address;
+  return email;
 });

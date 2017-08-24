@@ -3,3 +3,9 @@ login_email_fld_id: email
 login_pw_fld_id: password
 search_input_id: search-input
 comment: comment
+
+deposit_amount_id: depositAmount
+cardnumber_id: cardnumber
+expiry_id: expiry
+cvv_id: cvv
+pay_btn: pay-btn

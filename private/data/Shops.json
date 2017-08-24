@@ -333,6 +333,10 @@
       "format": "%s%v",
       "symbol": "RM"
     },
+    "NGN": {
+      "format": "%s%v",
+      "symbol": "₦"
+    },
     "NZD": {
       "format": "%s%v",
       "symbol": "$"
@@ -390,7 +394,7 @@
       "scale": 0
     }
   },
-  "currency": "USD",
+  "currency": "NGN",
   "languages": [{
     "label": "العربية",
     "i18n": "ar",
@@ -3091,7 +3095,8 @@
     "tag",
     "index",
     "cart/checkout",
-    "cart/completed"
+    "cart/completed",
+    "wallet"
   ]
 }, {
   "_id": "ddzuN2YPvgvx7rJS5",

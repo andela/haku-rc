@@ -103,6 +103,14 @@ stripe_complete_order_btn: "//form[@id='stripe-payment-form']/button"
 # order confirmation page
 thank_you_txt: "h3 > span"
 
+# paystack and wallet
+user_account_dropdown_btn: "#logged-in-display-name"
+wallet_click: "#wallet"
+pay_wallet: "[data-event-action='pay-wallet-click']"
+fund_wallet_click: "#fundWallet"
+paystack_checkout: "div.panel.panel-default [data-i18n='admin.dashboard.paystackPaymentLabel']"
+paystack_pay: "div.variant-select-option > button.btn.btn-default"
+
 # getting started tour
 tour_test: "[class='tour']"
 next: "[class='introjs-button introjs-nextbutton']"
