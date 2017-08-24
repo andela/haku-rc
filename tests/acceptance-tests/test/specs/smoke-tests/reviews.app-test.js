@@ -19,25 +19,23 @@ describe("review test", function () {
     const email = "test@test.com";
     const password = "tester";
 
-    browser.pause("5000");
+    browser.waitForExist(".product-grid-list.list-unstyled");
     browser.click(eleMap.login_dropdown_btn);
-    browser.pause(5000);
+    browser.waitForExist(".accounts-dropdown.open");
     browser.setValue(getId.retId(eleIds.login_email_fld_id), email);
     browser.setValue(getId.retId(eleIds.login_pw_fld_id), password);
     browser.click(eleMap.login_btn);
-    browser.pause("5000");
+    browser.waitForExist("#product-grid-list", 20000);
 
-
-    browser.click(eleMap.product_click);
-    browser.pause("5000");
-    browser.scroll(-100, 1000);
-    browser.pause("5000");
+    browser.click("#BCTMZ6HTxFSppJESk");
+    browser.pause(10000);
+    browser.scroll(0, 1000);
+    browser.pause(4000);
     browser.click(eleMap.star_click);
-    browser.pause("1000");
-    browser.setValue("#comment", "This is a review");
-    browser.pause("2000");
+    browser.pause(2000);
+    browser.setValue("#comment", "This is a test review");
+    browser.pause(2000);
     browser.click(eleMap.send_review);
-    browser.pause("1000");
-    expect(browser.getAttribute("div", "fb-integration")).to.exist;
+    expect(browser.getText("#review2")).to.contain("This is a test review");
   });
 });

@@ -41,7 +41,7 @@
             {{> starsRating rating=review.rating size=20}}
           </div>
           <div>
-            {{review.comment}}
+            <span id="review{{review.index}}">{{review.comment}}</span>
           </div>
         </div>
         <br> {{/each}} {{/if}}

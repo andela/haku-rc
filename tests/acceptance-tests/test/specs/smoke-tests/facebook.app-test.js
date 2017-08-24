@@ -11,10 +11,6 @@ beforeEach(function () {
 
 describe("facebook test", function () {
   it("verifies the facebook integration shows correctly", () => {
-    //const eleMap = yaml.safeLoad(fs.readFileSync("./tests/acceptance-tests/elements/element-map.yml", "utf8"));
-
-    // browser.pause("5000");
-    // browser.click(eleMap.product_click);
     browser.waitForExist("#HRzqEH2K73FhZaakd");
     browser.click("#HRzqEH2K73FhZaakd");
     browser.pause("5000");
