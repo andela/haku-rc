@@ -40,6 +40,13 @@ Template.CoreNavigationBar.helpers({
       // }
     };
   },
+  staticPagesMenu() {
+    return {
+      component: FlatButton,
+      kind: "flat",
+      label: "More Pages"
+    };
+  },
   onMenuButtonClick() {
     const instance = Template.instance();
     return () => {

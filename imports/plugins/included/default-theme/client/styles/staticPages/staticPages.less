@@ -1,0 +1,89 @@
+#static-pages-wrapper {
+   padding-left: 250px;
+   transition: all 0.4s ease 0s;
+   overflow-x: scroll;
+   height: 75vh;
+ }
+ 
+ #sidebar-wrapper {
+   margin-left: -250px;
+   width: 250px;
+   position: fixed;
+   height: 100%;
+   overflow-y: auto;
+   z-index: 8;
+   border-right: 1px solid #e6e6e6;
+   transition: all 0.4s ease 0s;
+ }
+ 
+ .header{
+   font-weight: bold;
+ }
+ .static-pages-new:after{
+   content: 'SavePage';
+ }
+ 
+ .static-pages-new{
+   margin-left: 20px !important;
+ }
+ .static-pages-update{
+   margin-left: 20px !important;
+ }
+ .static-pages-update:after{
+   content: 'SavePage';
+ }
+ #static-pages-wrapper.active {
+   padding-left: 0;
+ }
+ 
+ #wrapper.active #sidebar-wrapper {
+   left: 0;
+ }
+ 
+ .sidebar-nav li a span:before {
+   position: absolute;
+   left: 0;
+   color: #41484c;
+   text-align: center;
+   width: 20px;
+   line-height: 18px;
+ }
+ 
+ #page-content-wrapper {
+   width: 100%;
+   padding-top: 50px;
+   transition: all 0.4s ease 0s;
+ }
+ 
+ #static-pages-menu-toggle {
+   text-decoration: none;
+   float: left;
+   padding-right: 15px;
+   position: fixed;
+   z-index: 9;
+ }
+ 
+ .static-pages-menu-adjust {
+   margin-left: -40px;
+   transition: all 0.4s ease 0s;
+ }
+ 
+ .static-pages-input-wrapper > div {
+   padding-bottom: 2%;
+ }
+ 
+ .static-list-group > div {
+   border-radius: 0;
+ }
+ 
+ .static-pages-dropdown {
+   padding: 0 15px;
+ }
+ 
+ #page-content {
+   padding-top: 2%;
+ }
+ 
+ .special-input {
+    display:none;
+}

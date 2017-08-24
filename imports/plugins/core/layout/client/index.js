@@ -20,3 +20,6 @@ import "./templates/layout/layout.html";
 
 import "./templates/theme/theme.html";
 import "./templates/theme/theme.js";
+
+import "./templates/layout/staticPages/staticPage.html";
+import "./templates/layout/staticPages/staticPage.js";

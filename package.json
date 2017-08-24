@@ -74,6 +74,7 @@
     "react-taco-table": "^0.5.0",
     "react-tether": "^0.5.2",
     "react-textarea-autosize": "^4.0.5",
+    "simplemde": "^1.11.2",
     "sortablejs": "^1.4.2",
     "stripe": "^4.11.0",
     "sweetalert2": "^5.3.8",
