@@ -100,5 +100,7 @@ google-config-ui
 twitter-config-ui
 dynamic-import
 mizzao:autocomplete
+schiller:twit
+barbatus:stars-rating
 simple:rest
 pauldowman:dotenv

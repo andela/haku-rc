@@ -7,6 +7,11 @@ signup: "[data-event-action='signUp']"
 register: "[data-event-action='register']"
 filter_dropdown: "[id='price-filter']"
 sort_dropdown: "[id='sort-value']"
+select_product: "[id='HRzqEH2K73FhZaakd']"
+product_click: "[data-event-action='productClick']"
+star_click: "[class='stars-rating']"
+send_review: "[class='btn btn-success']"
+click: "[id='suggestedTitle']"
 
 #account profile
 pl_email_address_fld: "//div[2]/div/div/div/form/div/input"
