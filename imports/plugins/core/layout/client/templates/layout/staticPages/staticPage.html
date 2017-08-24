@@ -1,0 +1,12 @@
+<template name="staticPageView">
+{{#each pageDetail in page slug}}
+  <div id="name" class="nav nav-dashboard">
+    <h3 class="page-title">{{pageDetail.title}}</h3>
+  </div>
+  <div class="row">
+    <div id="page-content" class="col-md-10 col-md-offset-1">
+      {{{pageDetail.content}}}
+    </div>
+  </div>
+  {{/each}}
+</template>

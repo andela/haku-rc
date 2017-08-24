@@ -69,6 +69,25 @@
   {{/each}}
 </template>
 
+<template name="staticPagesNav">
+  <div class="dropdown" role="menu">
+    <div class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="1000">
+       <span id="logged-in-display-name"> Pages <b class="caret"></b></span>
+     </div>
+     <div class="dropdown-menu static-pages-dropdown" role="menu">
+       {{#each staticPage in staticPages}}
+       <li class="dropdown-apps-icon">
+         <a href="/pages/{{staticPage.slug}}" id="{{staticPage.title}}" title="{{staticPage.title}}">
+         <i class=""></i>
+         <span class="icon-text">
+         {{staticPage.title}}
+         </span>
+         </a>
+       </li>
+       {{/each}}
+     </div>
+   </div>
+ </template>
 <template name="walletMenu">
   <li id="wallet" class="dropdown-apps-icon">
     <a id="walletLink" href={{pathFor 'wallet'}} title="My Wallet">

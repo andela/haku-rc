@@ -7,12 +7,12 @@
       {{> tagNav tagNavProps}}
     </div>
     {{#if currentUser}}
-    <div class="tour" id="userTour">{{> React TourButtonComponent}}</div>
+        <div class="tour" id="userTour">{{> React TourButtonComponent}}</div>
     {{/if}}
-    <div class="search search-test" id="userTourSearch">{{> React IconButtonComponent}}</div>
-    <div class="languages hidden-xs" id="userTourLanguage">{{> i18nChooser}}</div>
-    <div class="accounts" id="userTourQuickAccess">{{> accounts tpl="loginDropdown"}}</div>
-    <div class="cart" id="userTourCart">{{> cartIcon}}</div>
-    <div class="cart-alert">{{> cartPanel}}</div>
+    <div  class="accounts">{{> accounts tpl="staticPagesNav"}}</div>
+    <div class="search search-test">{{> React IconButtonComponent}}</div>
+    <div class="languages hidden-xs">{{> i18nChooser}}</div>
+    <div class="accounts">{{> accounts tpl="loginDropdown"}}</div>
+    <div class="cart">{{> cartIcon}}</div>
   </div>
 </template>

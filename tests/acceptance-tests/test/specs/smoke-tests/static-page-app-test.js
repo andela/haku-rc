@@ -31,8 +31,13 @@ describe("simple login test", function () {
     browser.setValue(getId.retId(eleIds.login_pw_fld_id), adminPassword);
     browser.click(eleMap.login_btn);
     browser.pause("5000");
-    browser.click(eleMap.language);
+    browser.click(eleMap.admin_dropdown);
+    browser.pause("3000");
+    browser.click(eleMap.static_page);
     browser.pause("5000");
-    expect(browser.getText("#logged-in-display-name")).to.equal(adminUserName);
+    browser.setValue("#static-page-title", "About");
+    browser.setValue("#static-page-slug", "about-Page");
+    browser.click("#static-pages-submit");
+    expect(browser.getText("#logged-in-display-name")[1]).to.equal(adminUserName);
   });
 });
