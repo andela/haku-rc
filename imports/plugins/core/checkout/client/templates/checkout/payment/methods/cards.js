@@ -1,4 +1,4 @@
-import { Packages, Shops } from "/lib/collections";
+import { Packages, Shops, Wallets, Cart } from "/lib/collections";
 import { Template } from "meteor/templating";
 
 const openClassName = "in";
@@ -40,5 +40,69 @@ Template.corePaymentMethods.helpers({
       }
     }
     return self;
+  }
+});
+Template.walletPayment.onCreated(function () {
+  this.state = new ReactiveDict();
+  this.autorun(() => {
+    this.state.setDefault({
+      details: {balance: 0}
+    });
+    this.subscribe("transactionDetails", Meteor.userId());
+    const transactionInfo = Wallets.find().fetch();
+    if (transactionInfo.length > 0) {
+      this.state.set("details", transactionInfo[0]);
+    }
+  });
+});
+
+Template.walletPayment.helpers({
+  balance: () => {
+    return Template.instance().state.get("details").balance;
+  }
+});
+
+Template.walletPayment.events({
+  "click #pay-with-wallet": (event) => {
+    event.preventDefault();
+    const balance = Template.instance().state.get("details").balance;
+    const cartAmount = Number(Cart.findOne().cartTotal());
+    const currency = Shops.findOne().currency;
+    if (cartAmount > balance) {
+      Alerts.toast("Insufficient balance", "error");
+      return false;
+    }
+    transactionId = Random.id();
+    Meteor.call("wallet/transaction", Meteor.userId(), {
+      amount: cartAmount,
+      date: new Date(),
+      orderId: transactionId,
+      transactionType: "Debit"
+    }, (err, res) => {
+      if (res) {
+        const paymentMethod = {
+          processor: "Wallet",
+          storedCard: "",
+          method: "credit",
+          transactionId,
+          currency: currency,
+          amount: cartAmount,
+          status: "passed",
+          mode: "authorize",
+          createdAt: new Date(),
+          transactions: []
+        };
+        const theTransaction = {
+          amount: cartAmount,
+          transactionId,
+          currency: currency
+        };
+        paymentMethod.transactions.push(theTransaction);
+        Meteor.call("cart/submitPayment", paymentMethod);
+        Alerts.toast("Payment Successful", "success");
+      } else {
+        Alerts.toast("Oops!!, an error occured, please try again", "error");
+      }
+    });
   }
 });

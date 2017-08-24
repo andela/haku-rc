@@ -9,6 +9,7 @@ import { getSlug } from "/lib/api";
 import { Cart, Media, Orders, Products, Shops } from "/lib/collections";
 import * as Schemas from "/lib/collections/schemas";
 import { Logger, Reaction } from "/server/api";
+import jusibe from "jusibe";
 
 /**
  * Reaction Order Methods
@@ -322,8 +323,42 @@ Meteor.methods({
    * @param {Object} order - order object
    * @return {Boolean} email sent or not
    */
-  "orders/sendNotification": function (order) {
+  "orders/sendNotification"(order) {
     check(order, Object);
+
+    /**
+     * orders/sendSmsNotifications
+     *
+     * @summary send order sms notification to users
+     * @param {Object} order - order object
+     * @return {Boolean} sms sent or not
+     */
+    const shoppersPhone = order.billing[0].address.phone;
+    const shoppersName = order.billing[0].address.fullName;
+    Logger.info("CUSTOMER ORDER DETAILS: ", order.items);
+    Logger.info("CUSTOMER'S EMAIL: ", order.email);
+    Logger.info("CUSTOMERS PHONE NUMBER: " + shoppersPhone);
+    Logger.info("CUSTOMERS NAME: " + shoppersName);
+
+    // let vendorPhones = [];
+    const smsContent = {
+      to: shoppersPhone
+    };
+
+    const message = {
+      "new": `Dear ${shoppersName}, Your order has been received and will be processed shortly. Thank you.`,
+      "coreOrderWorkflow/processing": "Your order is on the way and will soon be delivered",
+      "coreOrderWorkflow/completed": "Your order has been shipped. Thank you.",
+      "coreorderWorkflow/canceled": "Your order was cancelled",
+      "success": "SMS Sent"
+    };
+
+    smsContent.message = message[order.workflow.status];
+    Logger.info("smsContent for Customer", smsContent);
+
+    Meteor.call("send/smsAlert", smsContent, (error) => {
+      Meteor.call("orders/response/error", error, message.success);
+    });
 
     if (!this.userId) {
       Logger.error("orders/sendNotification: Access denied");
@@ -434,12 +469,63 @@ Meteor.methods({
     Reaction.Email.send({
       to: order.email,
       from: `${shop.name} <${shop.emails[0].address}>`,
-      subject: `Your order is confirmed`,
-      // subject: `Order update from ${shop.name}`,
+      subject: "Your order has been confirmed",
       html: SSR.render(tpl,  dataForOrderEmail)
     });
 
     return true;
+  },
+
+  /**
+   * send/smsAlert
+   *
+   * @summary trigger sms from jusibe
+   * @param {Object} smsContent - body of message object
+   * @return {Object} return success or error on completion
+   */
+  "send/smsAlert"(smsContent) {
+    check(smsContent, Object);
+    const publicKey = process.env.PUBLIC_KEY;
+    const accessToken = process.env.ACCESS_TOKEN;
+    const client = new jusibe(publicKey, accessToken);
+    const toNumber = smsContent.to;
+    const message =  smsContent.message;
+    let validNumber;
+
+    if (toNumber.substr(0, 2) === "07" || "08") {
+      validNumber = toNumber.replace(toNumber.substr(0, 1), "+234");
+    }
+
+    const payload = {
+      to: validNumber || toNumber,  // Text this number
+      from: "ReactionCommerce",
+      message
+    };
+
+    client.sendSMS(payload)
+      .then(response => {
+        Logger.info(response.body);
+      })
+      .catch(error => {
+        Logger.info(error.body);
+      });
+  },
+
+  /**
+   * orders/response/error
+   * Logs message based on the error info received
+   * @param {Object} error - error message
+   * @param {String} success - success message
+   * @return {null} no return value
+   */
+  "orders/response/error"(error, success) {
+    check(error);
+    check(success, String);
+    if (error) {
+      Logger.warn("ERROR", error);
+    } else {
+      Logger.info(success);
+    }
   },
 
   /**

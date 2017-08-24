@@ -3,8 +3,15 @@ login_email_fld: "[class='form-control login-input-email']"
 search_test: "[class='search search-test']"
 login_pw_fld: "[class='form-control login-input-password']"
 login_btn: "[data-event-action='submitSignInForm']"
+signup: "[data-event-action='signUp']"
+register: "[data-event-action='register']"
 filter_dropdown: "[id='price-filter']"
 sort_dropdown: "[id='sort-value']"
+select_product: "[id='HRzqEH2K73FhZaakd']"
+product_click: "[data-event-action='productClick']"
+star_click: "[class='stars-rating']"
+send_review: "[class='btn btn-success']"
+click: "[id='suggestedTitle']"
 
 #account profile
 pl_email_address_fld: "//div[2]/div/div/div/form/div/input"
@@ -74,7 +81,7 @@ braintree_exp_month: "//form[@id='braintree-payment-form']/div[2]/div/select"
 braintree_exp_year: "//div[2]/div/div/form/div[2]/div[2]/select"
 braintree_cvv: "//div[3]/input"
 braintree_complete_order_btn: "//div[2]/div/div/form/button"
-example_payment: "//div[3]/a/h4/span"
+example_payment: "//div/a/h4/span"
 example_payment_cc: "//form[@id='example-payment-form']/div/div[2]/input"
 example_payment_exp_month: "//form[@id='example-payment-form']/div[2]/div/select"
 example_payment_exp_year: "//form[@id='example-payment-form']/div[2]/div[2]/select"
@@ -95,3 +102,17 @@ stripe_complete_order_btn: "//form[@id='stripe-payment-form']/button"
 
 # order confirmation page
 thank_you_txt: "h3 > span"
+
+# paystack and wallet
+user_account_dropdown_btn: "#logged-in-display-name"
+wallet_click: "#wallet"
+pay_wallet: "[data-event-action='pay-wallet-click']"
+fund_wallet_click: "#fundWallet"
+paystack_checkout: "div.panel.panel-default [data-i18n='admin.dashboard.paystackPaymentLabel']"
+paystack_pay: "div.variant-select-option > button.btn.btn-default"
+
+# getting started tour
+tour_test: "[class='tour']"
+next: "[class='introjs-button introjs-nextbutton']"
+prev: "[class='introjs-button introjs-prevbutton']"
+skip: "[class='introjs-button introjs-skipbutton']"

@@ -182,7 +182,14 @@ Router.initPackageRoutes = () => {
       }
     });
 
-// Static Pages View route
+    shop.route("/wallet", {
+      name: "wallet",
+      action() {
+        ReactionLayout({ template: "wallet" });
+      }
+    });
+
+    // Static Pages View route
     Router.route("/pages/:slug", {
       action(params) {
         ReactionLayout({

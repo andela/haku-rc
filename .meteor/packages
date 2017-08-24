@@ -102,4 +102,7 @@ dynamic-import
 templating-tools
 themeteorchef:commonmark
 mizzao:autocomplete
+schiller:twit
+barbatus:stars-rating
 simple:rest
+pauldowman:dotenv
