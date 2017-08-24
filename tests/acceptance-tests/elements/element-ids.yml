@@ -4,6 +4,7 @@ login_pw_fld_id: password
 search_input_id: search-input
 comment: comment
 page_title: static-page-title
+
 deposit_amount_id: depositAmount
 cardnumber_id: cardnumber
 expiry_id: expiry
