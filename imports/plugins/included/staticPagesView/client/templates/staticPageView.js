@@ -12,7 +12,8 @@ Template.staticPages.onRendered(() => {
 
   simplemde = new SimpleMDE({
     element: document.getElementById("editormd"),
-    autofocus: true
+    autofocus: true,
+    initialValue: "Add Page Content"
   });
 
   $(".editor-toolbar").append(
