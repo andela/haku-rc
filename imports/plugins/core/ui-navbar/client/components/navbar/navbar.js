@@ -41,6 +41,13 @@ Template.CoreNavigationBar.helpers({
       // }
     };
   },
+  howToShopMenu() {
+    return {
+      component: FlatButton,
+      kind: "flat",
+      label: "How to Shop"
+    };
+  },
   staticPagesMenu() {
     return {
       component: FlatButton,
