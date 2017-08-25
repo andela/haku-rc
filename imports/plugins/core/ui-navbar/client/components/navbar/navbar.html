@@ -7,7 +7,10 @@
       {{> tagNav tagNavProps}}
     </div>
     {{#if currentUser}}
-        <div class="tour" id="userTour">{{> React TourButtonComponent}}</div>
+      <div class="menu" id="how-to-shop">
+        <a href="/reaction/about">{{> React howToShopMenu}}</a>
+      </div>
+      <div class="tour" id="userTour">{{> React TourButtonComponent}}</div>
     {{/if}}
     <div  class="accounts">{{> accounts tpl="staticPagesNav"}}</div>
     <div class="search search-test">{{> React IconButtonComponent}}</div>
