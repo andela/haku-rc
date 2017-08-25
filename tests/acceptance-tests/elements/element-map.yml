@@ -12,6 +12,7 @@ product_click: "[data-event-action='productClick']"
 star_click: "[class='stars-rating']"
 send_review: "[class='btn btn-success']"
 click: "[id='suggestedTitle']"
+analytics: "[data-i18n='admin.dashboard.actionableAnalyticsLabel']"
 
 #account profile
 pl_email_address_fld: "//div[2]/div/div/div/form/div/input"
