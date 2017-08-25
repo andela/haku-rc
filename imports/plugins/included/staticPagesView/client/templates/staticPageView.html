@@ -1,0 +1,69 @@
+<template name="staticPages">
+  <div id="static-pages-wrapper">
+  <a id="static-pages-menu-toggle" class="static-pages-menu-adjust" href="#">
+  <i class="fa fa-2x fa-caret-square-o-left"></i>
+  </a>
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <div class="panel panel-default">
+      <table class="table">
+        <thead>
+          <tr>
+            <th colspan="4">Manage Your Pages</th>
+          </tr>
+        </thead>
+        <thead>
+          <tr>
+            <th colspan="3">Title of the page</th>
+            <th><button type="button" class="btn btn-default addPage" aria-label="Add New Page">
+              <span class="fa fa-plus-circle" aria-hidden="true"></span>
+              </button>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each userPage in userPages}}
+          <tr id="{{userPage._id}}">
+            <td >{{userPage.title}}</td>
+            <td><button type="button" title="Edit Page" class="btn btn-default editPage" aria-label="Edit Page">
+              <span class="fa fa-pencil" aria-hidden="true"></span>
+              </button>
+            </td>
+            <td><a href="/pages/{{userPage.slug}}"><button type="button" title="Preview" class="btn btn-default" aria-label="Preview">
+              <span class="fa fa-eye-slash" aria-hidden="true"></span>
+              </button></a>
+            </td>
+            <td><button type="button" title="Delete" class="btn btn-default deletePage" aria-label="Delete">
+              <span class="fa fa-eraser text-danger" aria-hidden="true"></span>
+              </button>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- Page content -->
+  <div id="page-content-wrapper">
+    <div class="page-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="static-pages-input-wrapper" >
+              <div class="form-group"> <span class="header">Page Title: </span>
+                <input class="form-control" id="static-page-title" type="text" placeholder="Title">
+              </div>
+              <input class="special-input form-control" type="text" id="static-page-id"><span class="header">Page URL:</span>
+               <div class="input-group">
+                 <span class="input-group-addon" id="basic-addon3">{{baseUrl}}/</span>
+                 <input type="text" class="form-control" id="static-page-slug" aria-describedby="basic-addon3" placeholder="route">
+               </div>
+               <textarea id="editormd"></textarea>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </template>

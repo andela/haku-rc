@@ -99,6 +99,8 @@ facebook-config-ui
 google-config-ui
 twitter-config-ui
 dynamic-import
+templating-tools
+themeteorchef:commonmark
 mizzao:autocomplete
 schiller:twit
 barbatus:stars-rating

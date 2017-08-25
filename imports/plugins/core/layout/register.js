@@ -16,5 +16,9 @@ Reaction.registerPackage({
     icon: "fa fa-object-group",
     priority: 1,
     container: "appearance"
+  }, {
+    route: "/about",
+    template: "aboutRC",
+    name: "About Page"
   }]
 });

@@ -117,3 +117,10 @@ tour_test: "[class='tour']"
 next: "[class='introjs-button introjs-nextbutton']"
 prev: "[class='introjs-button introjs-prevbutton']"
 skip: "[class='introjs-button introjs-skipbutton']"
+
+
+# Static page
+language: "[class='dropdown-toggle']"
+admin_dropdown: "[class='rui font-icon icon-reaction-logo']"
+static_page: "(//span[@data-i18n='admin.dashboard.manageStaticPagesLabel'])"
+page_title: "[id='static-page-title']"
